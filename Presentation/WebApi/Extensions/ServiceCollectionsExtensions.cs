@@ -1,4 +1,6 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using Persistence.Database;
 
 namespace WebApi.Extensions
 {
@@ -48,6 +50,13 @@ namespace WebApi.Extensions
                 });
             });
 
+            return builder;
+        }
+
+        public static WebApplicationBuilder AddData(this WebApplicationBuilder builder) 
+        {
+            builder.Services.AddDbContext<AppDbContext>(option => option
+            .UseNpgsql(builder.Configuration.GetConnectionString("orders_payments")));
             return builder;
         }
     }

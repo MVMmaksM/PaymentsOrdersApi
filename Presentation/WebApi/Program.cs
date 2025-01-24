@@ -12,6 +12,7 @@ namespace WebApi
             builder.Services.AddEndpointsApiExplorer();
 
             builder.AddSwagger();
+            builder.AddData();
 
             var app = builder.Build();          
 
