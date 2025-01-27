@@ -17,5 +17,7 @@ namespace Domain.Entities
         public List<ManufacturerEntity> Manufacturers { get; set; }
   
         public List<SellerEntity> Sellers { get; set; }
+
+        public List<OrdersEntity> Orders { get; set; }
     }
 }
