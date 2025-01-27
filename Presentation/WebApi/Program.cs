@@ -10,6 +10,7 @@ namespace WebApi
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddApiVersioning();
 
             builder.AddSwagger();
             builder.AddData();
