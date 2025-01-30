@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Models.Orders
 {
-    public class OrdersDto
+    public class OrderDto
     {
         public List<ProductEntity> Products { get; set; }
         public decimal Price { get; set; }

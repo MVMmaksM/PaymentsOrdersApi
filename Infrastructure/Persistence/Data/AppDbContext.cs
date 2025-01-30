@@ -25,5 +25,6 @@ namespace Persistence.Database
         public DbSet<ManufacturerEntity> Manufacturers { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<SellerEntity> Sellers { get; set; }
+        public DbSet<OrdersEntity> Orders { get; set; }
     }
 }

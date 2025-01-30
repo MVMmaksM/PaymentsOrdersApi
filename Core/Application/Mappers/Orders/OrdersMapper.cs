@@ -10,9 +10,9 @@ namespace Application.Mappers.Orders
 {
     public static class OrdersMapper
     {
-        public static OrdersDto ToDto(this OrdersEntity ordersEntity) 
+        public static OrderDto ToDto(this OrdersEntity ordersEntity) 
         {
-            return new OrdersDto
+            return new OrderDto
             {
                 Products = ordersEntity.Products,
                 Price = ordersEntity.Price
