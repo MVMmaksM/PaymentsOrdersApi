@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Models.Orders;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
@@ -26,7 +27,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create() 
+        public async Task<IActionResult> Create(CreateOrdersDto createOrdersDto) 
         {
             logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll started. Request:");
             ///service
