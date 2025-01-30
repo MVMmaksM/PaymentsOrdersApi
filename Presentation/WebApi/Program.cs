@@ -14,6 +14,8 @@ namespace WebApi
 
             builder.AddSwagger();
             builder.AddData();
+            builder.AddServices();
+            builder.AddRepositories();
 
             var app = builder.Build();          
 

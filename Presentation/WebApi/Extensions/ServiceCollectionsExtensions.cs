@@ -1,6 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Application.Interfaces;
+using Application.Interfaces.Repository;
+using Application.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Persistence.Database;
+using Persistence.Repository;
 
 namespace WebApi.Extensions
 {
@@ -56,7 +60,23 @@ namespace WebApi.Extensions
         public static WebApplicationBuilder AddData(this WebApplicationBuilder builder) 
         {
             builder.Services.AddDbContext<AppDbContext>(option => option
-            .UseNpgsql(builder.Configuration.GetConnectionString("orders_payments")));
+            .UseNpgsql(builder.Configuration.GetConnectionString("OrdersPayments")));
+            return builder;
+        }
+
+        public static WebApplicationBuilder AddRepositories(this WebApplicationBuilder builder) 
+        {
+            builder.Services.AddTransient<ISellerRepository, SellerRepository>();
+            builder.Services.AddTransient<IProductRespository, ProductRepository>();
+            builder.Services.AddTransient<IManufacturerRepository, ManufacturerRepository>();
+            builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddTransient<IOrdersRepository, OrderRepository>();
+            return builder;
+        }
+
+        public static WebApplicationBuilder AddServices(this WebApplicationBuilder builder) 
+        {
+            builder.Services.AddTransient<ICategoryService, CategoryService>();
             return builder;
         }
     }
