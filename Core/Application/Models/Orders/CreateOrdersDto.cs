@@ -9,6 +9,6 @@ namespace Application.Models.Orders
 {
     public class CreateOrdersDto
     {
-        public List<int> ProductsIds { get; set; }
+        public List<long> ProductsIds { get; set; }
     }
 }

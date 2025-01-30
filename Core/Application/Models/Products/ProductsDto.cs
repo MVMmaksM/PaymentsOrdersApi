@@ -12,6 +12,7 @@ namespace Application.Models.Products
         public string Name { get; set; }
         public decimal Price { get; set; }
         public long CategoryId { get; set; }
-
+        public long[] ManufacturersIds { get; set; }
+        public long[] SellersIds { get; set; }
     }
 }

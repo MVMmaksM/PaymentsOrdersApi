@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Mappers.Orders
 {
@@ -14,20 +13,23 @@ namespace Application.Mappers.Orders
         {
             return new OrderDto
             {
-                Products = ordersEntity.Products,
-                Price = ordersEntity.Price
+                Products = ordersEntity.Products.Select(p => new Models.Products.ProductsDto 
+                { 
+                    Id = p.Id,
+                    Name = p.Name,
+                    CategoryId = p.CategoryId,
+                    Price = p.Price
+                }).ToList(),
+
+                TotalCost = ordersEntity.Price,
+                CreateAt = ordersEntity.CreatedAt,
+                Id = ordersEntity.Id
             };
         }
 
         public static OrdersEntity ToEntity(this CreateOrdersDto createOrdersDto) 
         {
-            return new OrdersEntity
-            {
-                Products = createOrdersDto.ProductsIds.Select(productId => new ProductEntity 
-                {
-                    Id = productId
-                }).ToList()
-            };
+            return new OrdersEntity();
         }
     }
 }

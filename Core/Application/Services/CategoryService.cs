@@ -2,11 +2,6 @@
 using Application.Interfaces.Repository;
 using Application.Mappers.Categories;
 using Application.Models.Category;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Services
 {
@@ -21,7 +16,7 @@ namespace Application.Services
 
         public async Task<CategoryDto> GetById(long id)
         {
-            var categoryEntity = await categoryRepository.GetById(id);
+            var categoryEntity = await categoryRepository.GetById(id);           
             return categoryEntity.ToDto();
         }
     }

@@ -11,6 +11,6 @@ namespace Persistence.Repository
             => await dbContext.Sellers.ToListAsync();
 
         public async Task<SellerEntity> GetById(long id)
-            => await dbContext.Sellers.FirstOrDefaultAsync(s => s.Id == id);
+            => await dbContext.Sellers.FirstOrDefaultAsync(s => s.Id == id);      
     }
 }

@@ -1,27 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
     [Route("api/v{version:ApiVersion}/products")]
-    public class ProductsController(ILogger<ProductsController> logger) : ApiBaseController
+    public class ProductsController(IProductService productService) : ApiBaseController
     {
         [HttpGet]
         public async Task<IActionResult> GetAll() 
-        {
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll started. Request:");
-            ///service
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll finished. Request: Responce");
-
-            return Ok();
+        {         
+            var products = await productService.GetAll();
+            return Ok(products);
         }
 
         [HttpGet("{productId:long}")]
         public async Task<IActionResult> GetById(long productId) 
-        {
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll started. Request:");
-            ///service
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll finished. Request: Responce");
-
+        {           
+            var product = await productService.GetById(productId);
             return Ok();
         }
     }

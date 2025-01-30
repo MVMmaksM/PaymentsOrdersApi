@@ -10,6 +10,7 @@ namespace Application.Interfaces.Repository
     public interface IProductRespository
     {
         Task<List<ProductEntity>> GetAll();
-        Task<ProductEntity> GetById(long id);        
+        Task<ProductEntity> GetById(long id);
+        Task<List<ProductEntity>> GetByIds(IEnumerable<long> ids);
     }
 }

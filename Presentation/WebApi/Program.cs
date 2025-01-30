@@ -1,4 +1,5 @@
 using WebApi.Extensions;
+using WebApi.Middlewares;
 
 namespace WebApi
 {
@@ -8,7 +9,10 @@ namespace WebApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(option => 
+            {
+                option.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+            });
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddApiVersioning();
 
@@ -17,8 +21,9 @@ namespace WebApi
             builder.AddServices();
             builder.AddRepositories();
 
-            var app = builder.Build();          
+            var app = builder.Build();
 
+            app.UseMiddleware<LoggerMiddleware>();
             app.UseSwagger();
             app.UseSwaggerUI();
             app.UseHttpsRedirection();

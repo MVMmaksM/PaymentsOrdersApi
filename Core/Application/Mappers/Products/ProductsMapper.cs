@@ -17,7 +17,9 @@ namespace Application.Mappers.Products
                 Id = productEntity.Id,
                 Name = productEntity.Name,
                 CategoryId = productEntity.CategoryId,
-                Price = productEntity.Price
+                Price = productEntity.Price,
+                ManufacturersIds = productEntity.Manufacturers.Select(m => m.Id).ToArray(),
+                SellersIds = productEntity.Sellers.Select(p => p.Id).ToArray()
             };
         }
     }

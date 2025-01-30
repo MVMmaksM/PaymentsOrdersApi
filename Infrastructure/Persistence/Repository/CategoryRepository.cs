@@ -15,7 +15,7 @@ namespace Persistence.Repository
         public async Task<List<CategoryEntity>> GetAll() 
             => await dbContext.Categories.ToListAsync();
 
-        public async Task<CategoryEntity> GetById(long id)
+        public async Task<CategoryEntity?> GetById(long id)
             => await dbContext.Categories.FirstOrDefaultAsync(c => c.Id == id);
     }
 }

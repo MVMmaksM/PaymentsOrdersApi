@@ -1,15 +1,23 @@
-﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Models.Products;
+using System.Text.Json.Serialization;
 
 namespace Application.Models.Orders
 {
     public class OrderDto
     {
-        public List<ProductEntity> Products { get; set; }
-        public decimal Price { get; set; }
+        [JsonPropertyOrder(1)]
+        public long Id { get; set; }
+
+
+        [JsonPropertyOrder(2)]
+        public DateTime CreateAt { get; set; }
+
+
+        [JsonPropertyOrder(3)]
+        public decimal TotalCost { get; set; }
+
+
+        [JsonPropertyOrder(4)]
+        public List<ProductsDto> Products { get; set; }
     }
 }

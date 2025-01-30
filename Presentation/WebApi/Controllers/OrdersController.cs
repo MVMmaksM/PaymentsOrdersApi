@@ -1,48 +1,29 @@
-﻿using Application.Models.Orders;
+﻿using Application.Interfaces;
+using Application.Models.Orders;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
     [Route("api/v{version:ApiVersion}/orders")]
-    public class OrdersController(ILogger<OrdersController> logger) : ApiBaseController
-    {
-        [HttpGet("{userId:long}")]
-        public async Task<IActionResult> GetAll(long userId) 
-        {
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll started. Request:");
-            ///service
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll finished. Request: Responce");
-
-            return Ok();
-        }
-
+    public class OrdersController(IOrderService orderService) : ApiBaseController
+    {  
         [HttpGet("{orderId:long}")]
-        public async Task<IActionResult> GetById(long orderId) 
+        public async Task<IActionResult> GetById(long orderId)
         {
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll started. Request:");
-            ///service
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll finished. Request: Responce");
-
-            return Ok();
+            var order = await orderService.GetById(orderId);
+            return Ok(order);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateOrdersDto createOrdersDto) 
+        public async Task<IActionResult> Create(CreateOrdersDto createOrdersDto)
         {
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll started. Request:");
-            ///service
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll finished. Request: Responce");
-
-            return Ok();
+            var createdOrder = await orderService.Create(createOrdersDto);
+            return Ok(createdOrder);
         }
 
         [HttpPut("{orderId:long}")]
         public async Task<IActionResult> Update(long orderId)
-        {
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll started. Request:");
-            ///service
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetAll finished. Request: Responce");
-
+        {           
             return Ok();
         }
     }

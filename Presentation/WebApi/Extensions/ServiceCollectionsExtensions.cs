@@ -77,6 +77,10 @@ namespace WebApi.Extensions
         public static WebApplicationBuilder AddServices(this WebApplicationBuilder builder) 
         {
             builder.Services.AddTransient<ICategoryService, CategoryService>();
+            builder.Services.AddTransient<IProductService, ProductService>();
+            builder.Services.AddTransient<ISellerService, SellerService>();
+            builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
+            builder.Services.AddTransient<IOrderService, OrderService>();
             return builder;
         }
     }

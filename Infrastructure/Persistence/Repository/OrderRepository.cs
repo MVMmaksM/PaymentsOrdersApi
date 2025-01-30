@@ -18,7 +18,10 @@ namespace Persistence.Repository
             => await dbContext.Orders.ToListAsync();
 
         public async Task<OrdersEntity> GetById(long id)
-            => await dbContext.Orders.FirstOrDefaultAsync(o => o.Id == id);
+            => await dbContext
+            .Orders
+            .Include(o => o.Products)
+            .FirstOrDefaultAsync(o => o.Id == id);
 
         public async Task<OrdersEntity> Update(OrdersEntity updateOrders)
         {
