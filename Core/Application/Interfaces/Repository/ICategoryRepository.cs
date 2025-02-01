@@ -9,7 +9,7 @@ namespace Application.Interfaces.Repository
 {
     public interface ICategoryRepository
     {
-        Task<List<CategoryEntity>> GetAll();
+        Task<List<CategoryEntity>?> GetAll();
         Task<CategoryEntity?> GetById(long id);
     }
 }

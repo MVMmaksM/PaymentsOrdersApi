@@ -20,6 +20,7 @@ namespace WebApi
             builder.AddData();
             builder.AddServices();
             builder.AddRepositories();
+            builder.AddRedisCache();
 
             var app = builder.Build();
 

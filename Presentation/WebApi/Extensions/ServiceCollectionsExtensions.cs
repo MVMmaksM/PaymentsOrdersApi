@@ -83,5 +83,15 @@ namespace WebApi.Extensions
             builder.Services.AddTransient<IOrderService, OrderService>();
             return builder;
         }
+
+        public static WebApplicationBuilder AddRedisCache(this WebApplicationBuilder builder) 
+        {
+            builder.Services.AddStackExchangeRedisCache(option =>
+            {
+                option.Configuration = "localhost:6178";            
+            });
+
+            return builder;
+        }
     }
 }

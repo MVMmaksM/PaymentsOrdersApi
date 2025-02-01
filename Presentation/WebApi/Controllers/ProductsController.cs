@@ -17,7 +17,7 @@ namespace WebApi.Controllers
         public async Task<IActionResult> GetById(long productId) 
         {           
             var product = await productService.GetById(productId);
-            return Ok();
+            return Ok(product);
         }
     }
 }

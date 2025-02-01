@@ -8,14 +8,14 @@ namespace WebApi.Controllers
     public class CategoriesController(ICategoryService categoryService) : ApiBaseController
     {
         [HttpGet]
-        public async Task<IActionResult> GetAll(ApiVersion apiVersion)
+        public async Task<IActionResult> GetAll()
         {           
             var categories = await categoryService.GetAll();          
             return Ok(categories);
         }
 
         [HttpGet("{categoryId:long}")]
-        public async Task<IActionResult> GetById(ApiVersion apiVersion, long categoryId) 
+        public async Task<IActionResult> GetById(long categoryId) 
         {        
             var category = await categoryService.GetById(categoryId);     
             return Ok(category);
